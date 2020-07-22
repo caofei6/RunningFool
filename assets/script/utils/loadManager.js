@@ -7,7 +7,12 @@ cc.Class({
 
     },
 
-    loadAllScene (progressFunc, successFunc) {
+
+    loadScene (sceneName, successCallback) {
+        cc.director.loadScene(sceneName, successCallback);
+    },
+
+    loadPrefab(progressFunc, successFunc) {
         let SceneArray = gameDef.SceneArray;
         let onShowProgress = function (completedCount, totalCount) {
             var val = completedCount/totalCount;
@@ -18,8 +23,6 @@ cc.Class({
             if(successFunc) successFunc();
         };
 
-        for (let i = 0; i < SceneArray.length; i++) {
-            cc.director.preloadScene(SceneArray[i], onShowProgress, onSuccessLoad);
-        }
+        cc.loader.loadRes()
     },
 });

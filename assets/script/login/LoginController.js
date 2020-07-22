@@ -37,11 +37,11 @@ cc.Class({
     },
 
     registerEvent () {
-        eventCenter.addEventObserver(eventDef.PreloadScene, this.preloadAllScene, this);
+        eventCenter.addEventObserver(eventDef.loadAllPrefab, this.onLoadAllPrefab, this);
     },
 
     unregisterEvent () {
-        eventCenter.removeEventObserver(eventDef.PreloadScene, this.preloadAllScene, this);
+        eventCenter.removeEventObserver(eventDef.loadAllPrefab, this.onLoadAllPrefab, this);
     },
 
     initLoginModule () {
@@ -53,11 +53,11 @@ cc.Class({
             this.wechatSdk.login();
         }
         else {
-            this.preloadAllScene();
+            this.onLoadPrefab();
         }
     },
 
-    preloadAllScene () {
+    onLoadPrefab () {
         let self = this;
         this.hideLoginBtn();
         this.LabelTip.node.active = true;

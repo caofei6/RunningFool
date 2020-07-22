@@ -7,10 +7,7 @@ cc._RF.push(module, '90e609yB4RL7oZKGKxwljC9', 'physicsManager');
 cc.Class({
   "extends": cc.Component,
   properties: {
-    isDebug: {
-      "default": null,
-      type: cc.Boolean
-    }
+    isDebug: false
   },
   onLoad: function onLoad() {
     var phyMgr = cc.director.getPhysicsManager();

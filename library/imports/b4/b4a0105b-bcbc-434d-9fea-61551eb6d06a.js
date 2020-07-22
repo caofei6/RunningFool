@@ -41,10 +41,10 @@ cc.Class({
     this.unregisterEvent();
   },
   registerEvent: function registerEvent() {
-    eventCenter.addEventObserver(eventDef.PreloadScene, this.preloadAllScene, this);
+    eventCenter.addEventObserver(eventDef.loadAllPrefab, this.onLoadAllPrefab, this);
   },
   unregisterEvent: function unregisterEvent() {
-    eventCenter.removeEventObserver(eventDef.PreloadScene, this.preloadAllScene, this);
+    eventCenter.removeEventObserver(eventDef.loadAllPrefab, this.onLoadAllPrefab, this);
   },
   initLoginModule: function initLoginModule() {
     this.wechatSdk = new wechatSdk();
@@ -53,10 +53,10 @@ cc.Class({
     if (this.wechatSdk.isWeChat()) {
       this.wechatSdk.login();
     } else {
-      this.preloadAllScene();
+      this.onLoadPrefab();
     }
   },
-  preloadAllScene: function preloadAllScene() {
+  onLoadPrefab: function onLoadPrefab() {
     var self = this;
     this.hideLoginBtn();
     this.LabelTip.node.active = true;

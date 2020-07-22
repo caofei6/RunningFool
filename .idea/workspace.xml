@@ -19,7 +19,79 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01961ef8-4ee9-4b62-9663-ba8342d58946" name="Default Changelist" comment="" />
+    <list default="true" id="01961ef8-4ee9-4b62-9663-ba8342d58946" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/script/def/prefabDef.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scene/hall.fire" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scene/hall.fire" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scene/login.fire" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scene/login.fire" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/script/def/eventDef.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/script/def/eventDef.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/script/login/LoginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/script/login/LoginController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/script/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/script/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/script/utils/loadResource.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/script/utils/physicsManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/script/utils/physicsManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/00/0042c158-b28a-40e8-94ca-77bc47080280.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/00/0042c158-b28a-40e8-94ca-77bc47080280.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/0f/0ff59777-48f9-40fd-9ac2-07333d39b033.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/0f/0ff59777-48f9-40fd-9ac2-07333d39b033.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/14/14c74869-bdb4-4f57-86d8-a7875de2be30.bin" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/14/14c74869-bdb4-4f57-86d8-a7875de2be30.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/3b/3bbdb0f6-c5f6-45de-9f33-8b5cbafb4d6d.bin" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/3b/3bbdb0f6-c5f6-45de-9f33-8b5cbafb4d6d.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/41/41040484-785e-4fe9-aac4-42adead42390.js" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/41/41040484-785e-4fe9-aac4-42adead42390.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/41/41040484-785e-4fe9-aac4-42adead42390.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/41/41040484-785e-4fe9-aac4-42adead42390.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/55/556d971c-b5fe-4365-b119-d605af50ea47.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/55/556d971c-b5fe-4365-b119-d605af50ea47.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/7a/7a17de6e-227a-46b1-8009-e7157d4d3acf.bin" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/7a/7a17de6e-227a-46b1-8009-e7157d4d3acf.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/83/83f5eff8-3385-4f95-9b76-8da0aa1d96cd.bin" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/83/83f5eff8-3385-4f95-9b76-8da0aa1d96cd.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/84/8479bf6d-8b33-445c-bebc-e008f6fd259f.js" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/84/8479bf6d-8b33-445c-bebc-e008f6fd259f.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/84/8479bf6d-8b33-445c-bebc-e008f6fd259f.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/84/8479bf6d-8b33-445c-bebc-e008f6fd259f.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/8d/8d089cd5-3b70-40b3-8bb7-cfe1703f4d68.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/8d/8d089cd5-3b70-40b3-8bb7-cfe1703f4d68.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/90/90e60f72-0784-4bee-864a-18ac709630bd.js" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/90/90e60f72-0784-4bee-864a-18ac709630bd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/90/90e60f72-0784-4bee-864a-18ac709630bd.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/90/90e60f72-0784-4bee-864a-18ac709630bd.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/a1/a1ef2fc9-9c57-418a-8f69-6bed9a7a0e7f.bin" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/a1/a1ef2fc9-9c57-418a-8f69-6bed9a7a0e7f.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/a2/a2572ca5-a2d3-4e05-906f-6b78268d22e7.json" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/a2/a2572ca5-a2d3-4e05-906f-6b78268d22e7.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/a3/a3730f66-616c-42b1-bf16-a2bf4e9b760c.json" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/a3/a3730f66-616c-42b1-bf16-a2bf4e9b760c.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/a5/a579b610-0aa7-4a8b-b36b-be34cc834dcc.bin" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/a5/a579b610-0aa7-4a8b-b36b-be34cc834dcc.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/b4/b430cea3-6ab3-4106-b073-26c698918edd.bin" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/b4/b430cea3-6ab3-4106-b073-26c698918edd.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/b4/b4a0105b-bcbc-434d-9fea-61551eb6d06a.js" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/b4/b4a0105b-bcbc-434d-9fea-61551eb6d06a.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/b4/b4a0105b-bcbc-434d-9fea-61551eb6d06a.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/b4/b4a0105b-bcbc-434d-9fea-61551eb6d06a.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/db/db178727-75a5-4deb-9dfe-dc2df3feeb7b.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/db/db178727-75a5-4deb-9dfe-dc2df3feeb7b.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/e7/e70465e4-8ce6-42a4-8ec9-d5120ef87fe3.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/e7/e70465e4-8ce6-42a4-8ec9-d5120ef87fe3.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/ef/ef2299ae-8244-4200-97a9-69d01ecafbbb.js" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/ef/ef2299ae-8244-4200-97a9-69d01ecafbbb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/imports/ef/ef2299ae-8244-4200-97a9-69d01ecafbbb.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/library/imports/ef/ef2299ae-8244-4200-97a9-69d01ecafbbb.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/uuid-to-mtime.json" beforeDir="false" afterPath="$PROJECT_DIR$/library/uuid-to-mtime.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/layout.editor.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/layout.editor.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/local.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/local.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/node-tree-state.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/node-tree-state.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/BackupAssets/assets/scene/login.fire" beforeDir="false" afterPath="$PROJECT_DIR$/temp/BackupAssets/assets/scene/login.fire" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/gltf/buffer.bin" beforeDir="false" afterPath="$PROJECT_DIR$/temp/gltf/buffer.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/__file_stats__.json" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/__file_stats__.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/__qc_bundle__.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/__qc_bundle__.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/__qc_index__.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/__qc_index__.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/__quick_compile__.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/__quick_compile__.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/core/gameDef.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/core/gameDef.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/core/singleton.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/core/singleton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/data/userData.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/data/userData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/def/eventDef.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/def/eventDef.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/hall/hallController.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/hall/hallController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/login/LoginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/login/LoginController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/utils/eventCenter.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/utils/eventCenter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/utils/loadResource.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/utils/physicsManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/utils/physicsManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/utils/wechatSdk.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/dst/assets/script/utils/wechatSdk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/__qc_index__.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/__qc_index__.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/core/gameDef.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/core/gameDef.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/core/singleton.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/core/singleton.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/data/userData.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/data/userData.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/def/eventDef.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/def/eventDef.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/hall/hallController.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/hall/hallController.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/login/LoginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/login/LoginController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/login/LoginController.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/login/LoginController.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/main.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/utils/loadResource.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/utils/loadResource.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/utils/loadResource.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/utils/physicsManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/utils/physicsManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/utils/physicsManager.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/utils/physicsManager.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/utils/wechatSdk.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/temp/quick-scripts/src/assets/script/utils/wechatSdk.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/startup.json" beforeDir="false" afterPath="$PROJECT_DIR$/temp/startup.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +117,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="SvnConfiguration">
@@ -59,18 +137,21 @@
       <updated>1595419937618</updated>
       <workItem from="1595419939360" duration="992000" />
       <workItem from="1595420943174" duration="5411000" />
+      <workItem from="1595432642611" duration="2351000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

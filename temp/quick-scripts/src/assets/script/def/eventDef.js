@@ -5,7 +5,7 @@ cc._RF.push(module, '41040SEeF5P6arEQq3q1COQ', 'eventDef');
 "use strict";
 
 var eventDef = {};
-eventDef.PreloadScene = "PreloadScene";
+eventDef.loadAllPrefab = "loadAllPrefab";
 module.exports = eventDef;
 
 cc._RF.pop();

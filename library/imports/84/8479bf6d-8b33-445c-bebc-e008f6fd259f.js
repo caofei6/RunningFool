@@ -8,7 +8,7 @@ var singleton = require("singleton");
 
 var userData = require("userData");
 
-var loadResource = require("loadResource");
+var loadManager = require("loadManager");
 
 cc.Class({
   "extends": cc.Component,
@@ -52,7 +52,7 @@ cc.Class({
     singleton.userData = new userData();
   },
   initGameUtils: function initGameUtils() {
-    singleton.loadManager = new loadResource();
+    singleton.loadManager = new loadManager();
   }
 });
 

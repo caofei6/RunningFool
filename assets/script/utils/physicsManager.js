@@ -3,10 +3,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        isDebug: {
-            default: null,
-            type: cc.Boolean
-        }
+        isDebug: false
     },
 
     onLoad () {

@@ -1,6 +1,6 @@
 let singleton = require("singleton");
 let userData = require("userData");
-let loadResource = require("loadResource");
+let loadManager = require("loadManager");
 
 cc.Class({
     extends: cc.Component,
@@ -56,6 +56,6 @@ cc.Class({
     },
 
     initGameUtils () {
-        singleton.loadManager = new loadResource();
+        singleton.loadManager = new loadManager();
     },
 });

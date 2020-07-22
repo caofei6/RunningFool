@@ -1,6 +1,6 @@
 var eventDef = {};
 
-eventDef.PreloadScene = "PreloadScene";
+eventDef.loadAllPrefab = "loadAllPrefab";
 
 
 module.exports = eventDef;
