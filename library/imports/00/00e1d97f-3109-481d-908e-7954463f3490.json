@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "low2_80_100",
+    "texture": "3deafb40-d4dc-4cd4-8df7-fe2a7162ea9b",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      80,
+      100
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      80,
+      100
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

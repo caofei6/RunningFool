@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "kneeling",
+    "texture": "1da55d10-3453-4cd1-a2a8-bc05028e4c37",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      604,
+      697
+    ],
+    "offset": [
+      -2.5,
+      25.5
+    ],
+    "originalSize": [
+      609,
+      748
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

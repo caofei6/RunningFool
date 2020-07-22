@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "tipMid",
+    "texture": "df36a8a8-d5d5-4e07-a33e-8da1dc49d6ed",
+    "atlas": "",
+    "rect": [
+      77,
+      0,
+      147,
+      170
+    ],
+    "offset": [
+      0.5,
+      0
+    ],
+    "originalSize": [
+      300,
+      170
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
