@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        406.1553017621725,
+        387.1133554916441,
         0,
         0,
         0,
@@ -530,7 +530,7 @@
         1,
         1,
         1,
-        1
+        0
       ]
     },
     "_eulerAngles": {
@@ -601,8 +601,8 @@
     ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
-    "_N$transition": 0,
-    "transition": 0,
+    "_N$transition": 3,
+    "transition": 3,
     "_N$normalColor": {
       "__type__": "cc.Color",
       "r": 255,

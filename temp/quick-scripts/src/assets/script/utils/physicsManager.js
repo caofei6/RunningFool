@@ -8,7 +8,7 @@ cc.Class({
   "extends": cc.Component,
   properties: {
     isDebug: {
-      "default": true,
+      "default": null,
       type: cc.Boolean
     }
   },

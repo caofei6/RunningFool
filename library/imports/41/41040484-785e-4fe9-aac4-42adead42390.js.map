@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets\\script\\def\\eventDef.js"],"names":["eventDef","PreloadScene","module","exports"],"mappings":";;;;;;AAAA,IAAIA,QAAQ,GAAG,EAAf;AAEAA,QAAQ,CAACC,YAAT,GAAwB,cAAxB;AAGAC,MAAM,CAACC,OAAP,GAAiBH,QAAjB","sourceRoot":"/","sourcesContent":["var eventDef = {};\r\n\r\neventDef.PreloadScene = \"PreloadScene\";\r\n\r\n\r\nmodule.exports = eventDef;"]}

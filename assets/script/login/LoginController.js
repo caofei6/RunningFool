@@ -1,6 +1,8 @@
 let gameDef = require("gameDef");
 let singleton = require("singleton");
 let wechatSdk = require("wechatSdk");
+let eventCenter = require("eventCenter");
+let eventDef = require("eventDef");
 
 cc.Class({
     extends: cc.Component,
@@ -14,6 +16,11 @@ cc.Class({
         LabelTip: {
             type: cc.Label,
             default: null
+        },
+
+        NodeBtnLogin: {
+            type: cc.Node,
+            default: null
         }
     },
 
@@ -21,7 +28,20 @@ cc.Class({
         singleton.curScene = gameDef.Scene.Login;
         this.LabelTip.node.active = false;
         this.ProgressBar.node.active = false;
+        this.registerEvent();
         this.initLoginModule();
+    },
+
+    onDestroy () {
+        this.unregisterEvent();
+    },
+
+    registerEvent () {
+        eventCenter.addEventObserver(eventDef.PreloadScene, this.preloadAllScene, this);
+    },
+
+    unregisterEvent () {
+        eventCenter.removeEventObserver(eventDef.PreloadScene, this.preloadAllScene, this);
     },
 
     initLoginModule () {
@@ -29,13 +49,8 @@ cc.Class({
     },
 
     onClickWxLogin () {
-        var self = this;
-        this.LabelTip.node.active = true;
-        this.ProgressBar.node.active = true;
         if (this.wechatSdk.isWeChat()) {
-            this.wechatSdk.login(function () {
-                self.preloadAllScene();
-            });
+            this.wechatSdk.login();
         }
         else {
             this.preloadAllScene();
@@ -44,16 +59,19 @@ cc.Class({
 
     preloadAllScene () {
         let self = this;
+        this.hideLoginBtn();
+        this.LabelTip.node.active = true;
+        this.ProgressBar.node.active = true;
         let progressFunc = function (progress) {
             if (!self.ProgressBar) return;
-            if (progress >= 100) {
-                self.ProgressBar.progress = 100;
+            if (progress >= 1) {
+                self.ProgressBar.progress = 1;
                 self.LabelTip.string = "正在进入游戏，请耐心等待～";
                 return;
             }
             self.ProgressBar.progress = progress;
-            self.LabelTip.string = "正在进入游戏，当前加载" + (progress * 100).toFixed(2) + "%";
-            console.log("正在进入游戏，当前加载" + (progress * 100).toFixed(2) + "%");
+            self.LabelTip.string = "正在进入游戏，当前加载 " + (progress * 100).toFixed(2) + "%";
+            console.log("正在进入游戏，当前加载 " + (progress * 100).toFixed(2) + "%");
         };
 
         let successFuc = function () {
@@ -61,6 +79,11 @@ cc.Class({
         };
 
         singleton.loadManager.loadAllScene(progressFunc, successFuc);
-    }
+    },
+
+    hideLoginBtn () {
+        if(!this.node) return;
+        this.NodeBtnLogin.active = false;
+    },
 
 });

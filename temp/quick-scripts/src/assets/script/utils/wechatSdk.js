@@ -6,6 +6,10 @@ cc._RF.push(module, 'db178cndaVN653+3C3z/ut7', 'wechatSdk');
 
 var singleton = require("singleton");
 
+var eventCenter = require("eventCenter");
+
+var eventDef = require("eventDef");
+
 cc.Class({
   "extends": cc.Component,
   ctor: function ctor() {
@@ -17,6 +21,7 @@ cc.Class({
     }
 
     this.userInfo = null;
+    this.userInfoCallback = null;
     this.wxSessionVaild = this.checkWxSession();
     this.initLoginButton();
   },
@@ -38,13 +43,12 @@ cc.Class({
     });
   },
   // 登录
-  login: function login(successFunc) {
+  login: function login() {
     console.log("wechatSdk login..");
     this.successFunc = successFunc;
 
     if (this.wxSessionVaild) {
       this.getUserInfo();
-      if (successFunc) successFunc();
     }
   },
   // 初始化授权按钮
@@ -83,11 +87,8 @@ cc.Class({
             if (res.userInfo) {
               self.userInfo = res.userInfo;
               singleton.userData.setUserWxData(self.userInfo);
+              eventCenter.emitEvent(eventDef.PreloadScene);
               button.destroy();
-
-              if (self.successFunc) {
-                self.successFunc();
-              }
             } else {
               console.log("The user cncelled the authorization!");
             }
@@ -104,6 +105,7 @@ cc.Class({
         console.log("The userInfo is " + JSON.stringify(res.userInfo));
         self.userInfo = res.userInfo;
         singleton.userData.setUserWxData(self.userInfo);
+        eventCenter.emitEvent(eventDef.PreloadScene);
       }
     });
   }

@@ -1,34 +1,37 @@
 let singleton = require("singleton");
+let eventCenter = require("eventCenter");
+let eventDef = require("eventDef");
 
 cc.Class({
     extends: cc.Component,
 
-    ctor () {
+    ctor() {
         console.log("wechatSdk ctor");
 
-        if(!this.isWeChat()) {
+        if (!this.isWeChat()) {
             console.log("The env isn't wechat");
             return;
         }
 
         this.userInfo = null;
+        this.userInfoCallback = null;
         this.wxSessionVaild = this.checkWxSession();
         this.initLoginButton();
     },
 
     // 判断是否是wx
-    isWeChat () {
+    isWeChat() {
         return cc.sys.browserType === cc.sys.BROWSER_TYPE_WECHAT_GAME;
     },
 
     // 判断Session是否过期
-    checkWxSession () {
+    checkWxSession() {
         wx.checkSession({
-            success () {
+            success() {
                 //session_key 未过期，并且在本生命周期一直有效
                 return true;
             },
-            fail () {
+            fail() {
                 // session_key 已经失效，需要重新执行登录流程
                 return false;
             }
@@ -36,30 +39,28 @@ cc.Class({
     },
 
     // 登录
-    login (successFunc) {
+    login () {
         console.log("wechatSdk login..");
         this.successFunc = successFunc;
         if (this.wxSessionVaild) {
             this.getUserInfo();
-            if(successFunc) successFunc();
         }
     },
 
     // 初始化授权按钮
-    initLoginButton () {
+    initLoginButton() {
         let self = this;
         let wx = window['wx'];
         let sysInfo = wx.getSystemInfoSync();
         let width = sysInfo.screenWidth;
         let height = sysInfo.screenHeight;
-        wx.getSetting ({
-            success (res) {
+        wx.getSetting({
+            success(res) {
                 console.log("UserAuthSetting: " + res.authSetting);
                 if (res.authSetting["scope.userInfo"]) {
                     console.log("The user has the scope!");
                     self.getUserInfo();
-                }
-                else {
+                } else {
                     console.log("The user hasn't the scope!");
                     let button = wx.createUserInfoButton({
                         type: 'text',
@@ -81,12 +82,9 @@ cc.Class({
                         if (res.userInfo) {
                             self.userInfo = res.userInfo;
                             singleton.userData.setUserWxData(self.userInfo);
+                            eventCenter.emitEvent(eventDef.PreloadScene);
                             button.destroy();
-                            if(self.successFunc) {
-                                self.successFunc();
-                            }
-                        }
-                        else {
+                        } else {
                             console.log("The user cncelled the authorization!");
                         }
                     })
@@ -96,14 +94,15 @@ cc.Class({
     },
 
     // 获取用户信息
-    getUserInfo () {
+    getUserInfo() {
         let self = this;
         wx.getUserInfo({
-            success(res){
+            success(res) {
                 console.log("The userInfo is " + JSON.stringify(res.userInfo));
                 self.userInfo = res.userInfo;
                 singleton.userData.setUserWxData(self.userInfo);
+                eventCenter.emitEvent(eventDef.PreloadScene);
             }
         });
-    }
+    },
 });
