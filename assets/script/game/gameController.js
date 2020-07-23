@@ -99,7 +99,7 @@ cc.Class({
         var touches = event.getTouches();
         var touchPoint = touches[0].getLocation();
 
-        var touchWorldPos = touchPoint.convertToWorldSpaceAR()
+        var touchWorldPos = touchPoint.convertToWorldSpaceAR();
 
         if (touchPoint.x > this.NodePerson.x) {
             this.moveDirX = 1;
