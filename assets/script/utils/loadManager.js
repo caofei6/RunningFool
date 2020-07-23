@@ -1,4 +1,4 @@
-let gameDef = require("gameDef");
+let resourceDef = require("resourceDef");
 
 cc.Class({
     extends: cc.Component,
@@ -7,13 +7,12 @@ cc.Class({
 
     },
 
-
     loadScene (sceneName, successCallback) {
         cc.director.loadScene(sceneName, successCallback);
     },
 
     loadPrefab(progressFunc, successFunc) {
-        let SceneArray = gameDef.SceneArray;
+        let prefabArray = resourceDef.PrefabArray;
         let onShowProgress = function (completedCount, totalCount) {
             var val = completedCount/totalCount;
             if(progressFunc) progressFunc(val);
@@ -23,6 +22,6 @@ cc.Class({
             if(successFunc) successFunc();
         };
 
-        cc.loader.loadRes()
+        cc.loader.loadResArray(prefabArray, onShowProgress, onSuccessLoad);
     },
 });

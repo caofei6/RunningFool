@@ -1,6 +1,6 @@
-var eventDef = {};
+var EventDef = {};
 
-eventDef.loadAllPrefab = "loadAllPrefab";
+EventDef.LoginSuccess = "LoginSuccess";
 
 
-module.exports = eventDef;
+module.exports = EventDef;

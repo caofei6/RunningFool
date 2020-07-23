@@ -1,4 +1,5 @@
 let gameDef = require("gameDef");
+let resourceDef = require("resourceDef");
 let singleton = require("singleton");
 
 cc.Class({
@@ -17,7 +18,7 @@ cc.Class({
     },
 
     onLoad () {
-        singleton.curScene = gameDef.Scene.Hall;
+        singleton.curScene = resourceDef.SceneMap.Hall;
     },
 
     start () {
@@ -38,11 +39,11 @@ cc.Class({
 
     onClickNormalBtn () {
         singleton.curGameMode = gameDef.Mode.Normal;
-        cc.director.loadScene(gameDef.Scene.Game);
+        cc.director.loadScene(resourceDef.SceneMap.Game);
     },
 
     onClickCrazyBtn () {
         singleton.curGameMode = gameDef.Mode.Crazy;
-        cc.director.loadScene(gameDef.Scene.Game);
+        cc.director.loadScene(resourceDef.SceneMap.Game);
     },
 });

@@ -1,1 +1,0 @@
-{"version":3,"sources":["assets/script/def/eventDef.js"],"names":["eventDef","loadAllPrefab","module","exports"],"mappings":";;;;;;AAAA,IAAIA,QAAQ,GAAG,EAAf;AAEAA,QAAQ,CAACC,aAAT,GAAyB,eAAzB;AAGAC,MAAM,CAACC,OAAP,GAAiBH,QAAjB","sourceRoot":"/","sourcesContent":["var eventDef = {};\n\neventDef.loadAllPrefab = \"loadAllPrefab\";\n\n\nmodule.exports = eventDef;"]}

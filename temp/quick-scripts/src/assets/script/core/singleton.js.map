@@ -1,1 +1,0 @@
-{"version":3,"sources":["assets/script/core/singleton.js"],"names":["singleton","module","exports"],"mappings":";;;;;;AACA,IAAIA,SAAS,GAAG,EAAhB;AAIAC,MAAM,CAACC,OAAP,GAAiBF,SAAjB","sourceRoot":"/","sourcesContent":["\nlet singleton = {\n\n};\n\nmodule.exports = singleton;"]}

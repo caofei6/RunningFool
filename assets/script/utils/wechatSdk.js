@@ -14,7 +14,6 @@ cc.Class({
         }
 
         this.userInfo = null;
-        this.userInfoCallback = null;
         this.wxSessionVaild = this.checkWxSession();
         this.initLoginButton();
     },
@@ -82,7 +81,7 @@ cc.Class({
                         if (res.userInfo) {
                             self.userInfo = res.userInfo;
                             singleton.userData.setUserWxData(self.userInfo);
-                            eventCenter.emitEvent(eventDef.PreloadScene);
+                            eventCenter.emitEvent(eventDef.LoginSuccess);
                             button.destroy();
                         } else {
                             console.log("The user cncelled the authorization!");
@@ -101,7 +100,7 @@ cc.Class({
                 console.log("The userInfo is " + JSON.stringify(res.userInfo));
                 self.userInfo = res.userInfo;
                 singleton.userData.setUserWxData(self.userInfo);
-                eventCenter.emitEvent(eventDef.PreloadScene);
+                eventCenter.emitEvent(eventDef.LoginSuccess);
             }
         });
     },

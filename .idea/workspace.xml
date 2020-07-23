@@ -116,7 +116,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/script" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -124,6 +124,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Exercise\RunningFool\assets\script\def" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -138,29 +143,41 @@
       <workItem from="1595419939360" duration="992000" />
       <workItem from="1595420943174" duration="5411000" />
       <workItem from="1595432642611" duration="2351000" />
+      <workItem from="1595502020743" duration="6946000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="842" y="382" width="558" height="276" key="#Notifications" timestamp="1595420742201">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="842" y="382" width="558" height="276" key="#Notifications/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595420742201" />
+    <state x="740" y="357" key="FileChooserDialogImpl" timestamp="1595504717093">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="357" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595504717093" />
+    <state x="662" y="249" width="596" height="706" key="find.popup" timestamp="1595505165584">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="662" y="249" width="596" height="706" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595505165584" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1595506712295">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595506712295" />
   </component>
 </project>
