@@ -72,7 +72,7 @@
         "__id__": 3
       },
       {
-        "__id__": 5
+        "__id__": 8
       },
       {
         "__id__": 10
@@ -153,6 +153,15 @@
     "_components": [
       {
         "__id__": 4
+      },
+      {
+        "__id__": 5
+      },
+      {
+        "__id__": 6
+      },
+      {
+        "__id__": 7
       }
     ],
     "_prefab": null,
@@ -178,9 +187,9 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        3840,
-        720,
-        386.2368159510432,
+        0,
+        0,
+        379.54916485546437,
         0,
         0,
         0,
@@ -240,6 +249,83 @@
     "_id": "81GN3uXINKVLeW4+iKSlim"
   },
   {
+    "__type__": "cc.RigidBody",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 3
+    },
+    "_enabled": true,
+    "_type": 1,
+    "_allowSleep": true,
+    "_gravityScale": 0,
+    "_linearDamping": 0,
+    "_angularDamping": 0,
+    "_linearVelocity": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_angularVelocity": 0,
+    "_fixedRotation": false,
+    "enabledContactListener": false,
+    "bullet": false,
+    "awakeOnLoad": true,
+    "_id": "93qMyG/vpAIpZ4NZq89Z/b"
+  },
+  {
+    "__type__": "cc.PhysicsBoxCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 3
+    },
+    "_enabled": true,
+    "tag": 0,
+    "_density": 1,
+    "_sensor": false,
+    "_friction": 0.2,
+    "_restitution": 0,
+    "body": null,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": -665,
+      "y": 360
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 50,
+      "height": 1440
+    },
+    "_id": "1a7n0oDx5CnqK7BzemRa8H"
+  },
+  {
+    "__type__": "cc.PhysicsBoxCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 3
+    },
+    "_enabled": true,
+    "tag": 0,
+    "_density": 1,
+    "_sensor": false,
+    "_friction": 0.2,
+    "_restitution": 0,
+    "body": null,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 665,
+      "y": 360
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 50,
+      "height": 1440
+    },
+    "_id": "cfQLEUmz9IIqBu413uaSlv"
+  },
+  {
     "__type__": "cc.Node",
     "_name": "SpriteBg",
     "_objFlags": 0,
@@ -249,15 +335,6 @@
     "_children": [],
     "_active": true,
     "_components": [
-      {
-        "__id__": 6
-      },
-      {
-        "__id__": 7
-      },
-      {
-        "__id__": 8
-      },
       {
         "__id__": 9
       }
@@ -315,7 +392,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 5
+      "__id__": 8
     },
     "_enabled": true,
     "_materials": [
@@ -341,83 +418,6 @@
     "_isTrimmedMode": true,
     "_atlas": null,
     "_id": "d3pvACd+lCNrNAGBGN0+qX"
-  },
-  {
-    "__type__": "cc.RigidBody",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 5
-    },
-    "_enabled": true,
-    "_type": 1,
-    "_allowSleep": true,
-    "_gravityScale": 0,
-    "_linearDamping": 0,
-    "_angularDamping": 0,
-    "_linearVelocity": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_angularVelocity": 0,
-    "_fixedRotation": false,
-    "enabledContactListener": false,
-    "bullet": false,
-    "awakeOnLoad": true,
-    "_id": "13bbIjodFJG5OTui/6ACC6"
-  },
-  {
-    "__type__": "cc.PhysicsBoxCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 5
-    },
-    "_enabled": true,
-    "tag": 0,
-    "_density": 1,
-    "_sensor": false,
-    "_friction": 0.2,
-    "_restitution": 0,
-    "body": null,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": -25,
-      "y": 720
-    },
-    "_size": {
-      "__type__": "cc.Size",
-      "width": 50,
-      "height": 1440
-    },
-    "_id": "1bYk7qdzZDGoi2gLbppE/w"
-  },
-  {
-    "__type__": "cc.PhysicsBoxCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 5
-    },
-    "_enabled": true,
-    "tag": 0,
-    "_density": 1,
-    "_sensor": false,
-    "_friction": 0.2,
-    "_restitution": 0,
-    "body": null,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": 5145,
-      "y": 720
-    },
-    "_size": {
-      "__type__": "cc.Size",
-      "width": 50,
-      "height": 1440
-    },
-    "_id": "23xXo1PitC1qtxjY9U6GUZ"
   },
   {
     "__type__": "cc.Node",
@@ -823,8 +823,11 @@
     "NodeCamera": {
       "__id__": 3
     },
-    "NodeTouchBg": {
-      "__id__": 5
+    "NodeBg": {
+      "__id__": 8
+    },
+    "NodeGrass": {
+      "__id__": 16
     },
     "NodePerson": {
       "__id__": 10
