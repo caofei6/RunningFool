@@ -76,7 +76,7 @@ cc.Class({
             }
             self.ProgressBar.progress = progress;
             self.LabelTip.string = "正在进入游戏，当前加载 " + (progress * 100).toFixed(2) + "%";
-            console.log("正在进入游戏，当前加载 " + (progress * 100).toFixed(2) + "%");
+            // console.log("正在进入游戏，当前加载 " + (progress * 100).toFixed(2) + "%");
         };
 
         let successFuc = function () {

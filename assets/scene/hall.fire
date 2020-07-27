@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        289.40733094797685,
+        224.30057958016963,
         0,
         0,
         0,
@@ -530,7 +530,7 @@
         1,
         1,
         1,
-        1
+        0
       ]
     },
     "_eulerAngles": {
@@ -1363,7 +1363,7 @@
       "__id__": 2
     },
     "_enabled": true,
-    "isDebug": false,
+    "isDebug": true,
     "_id": "50NWGVK1RBnrCVOIeiL9N2"
   },
   {

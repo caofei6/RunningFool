@@ -24,4 +24,19 @@ cc.Class({
 
         cc.loader.loadResArray(prefabArray, onShowProgress, onSuccessLoad);
     },
+
+    loadSpriteFrame (spriteNode, imagePath, target) {
+        if(!imagePath) return;
+        cc.loader.loadRes(imagePath, cc.SpriteFrame, function (err, spriteFrame) {
+            if(!err && spriteFrame && target && cc.isValid(target) && spriteNode) {
+                var iconSize = spriteNode.node.getContentSize();
+                spriteNode.spriteFrame = spriteFrame;
+                spriteNode.node.setContentSize(iconSize);
+                spriteNode.node.active = true;
+            }
+            else {
+                console.log("!!! err " + err);
+            }
+        })
+    }
 });
