@@ -3,7 +3,7 @@
   "_name": "personKick",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 0.35,
+  "_duration": 0.85,
   "sample": 60,
   "speed": 1,
   "wrapMode": 1,
@@ -24,7 +24,7 @@
             }
           },
           {
-            "frame": 0.3333333333333333,
+            "frame": 0.8333333333333334,
             "value": {
               "__uuid__": "223f57dc-c4fb-49d6-934e-d076d7aca5d6"
             }

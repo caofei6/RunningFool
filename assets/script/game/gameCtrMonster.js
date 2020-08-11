@@ -20,13 +20,22 @@ cc.Class({
         }
     },
 
+    onLoad () {
+        this._super();
+        this.startCreateMonster();
+    },
+
     update () {
         this._super();
-        if (!this.ctrMonster) return;
-        if (this.curMonsterNum >= this.monsterMaxNum) return;
-        if (this.curFrame % 60 === this.monsterCreateTime) {
-            this.createMonster();
-        }
+    },
+
+    startCreateMonster () {
+        var self = this;
+        var callback = function () {
+            if (!self.ctrMonster) return self.NodeRoot.unschedule(callback);
+            self.createMonster();
+        };
+        this.schedule(callback, 6);
     },
 
     createMonster () {
@@ -40,9 +49,11 @@ cc.Class({
         var data = {};
         data.imagePath = monsterData.path;
         data.animName = monsterData.name;
+        data.monsterType = monsterData.type;
+        data.baseVelocityX = this.baseVelocityX;
         var monsterNode = cc.instantiate(this.PrefabMonster);
         monsterNode.getComponent(gameMonster).init(data);
-        monsterNode.setPosition(cc.v2(0, 0));
+        monsterNode.setPosition(cc.v2(1000, -100));
         this.NodeRoot.addChild(monsterNode);
         this.curMonsterNum++;
     },

@@ -25,14 +25,15 @@ cc.Class({
         cc.loader.loadResArray(prefabArray, onShowProgress, onSuccessLoad);
     },
 
-    loadSpriteFrame (spriteNode, imagePath, target) {
+    loadSpriteFrame (spriteNode, imagePath, target, callback) {
         if(!imagePath) return;
         cc.loader.loadRes(imagePath, cc.SpriteFrame, function (err, spriteFrame) {
             if(!err && spriteFrame && target && cc.isValid(target) && spriteNode) {
-                var iconSize = spriteNode.node.getContentSize();
+                var originSize = spriteFrame.getOriginalSize();
                 spriteNode.spriteFrame = spriteFrame;
-                spriteNode.node.setContentSize(iconSize);
+                spriteNode.node.setContentSize(originSize);
                 spriteNode.node.active = true;
+                if(callback) callback(originSize);
             }
             else {
                 console.log("!!! err " + err);

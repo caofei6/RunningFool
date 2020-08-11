@@ -19,8 +19,8 @@ cc.Class({
 
     initPlayData () {
         this.curFrame = 0;
-        this.baseVelocityX = 200;
-        this.baseVelocityY = 800;
+        this.baseVelocityX = 500;
+        this.baseVelocityY = 900;
         this.bgMoveStartX = -640;
         this.bgMoveMinX = -3500;
         this.bgMoveStep = 5;
@@ -29,7 +29,7 @@ cc.Class({
         this.grassMoveMinX = -3500;
         this.grassMoveStep = 10;
 
-        this.monsterCreateTime = 5;
+        this.monsterCreateTime = 20;
         this.monsterMaxNum = 5;
         this.curMonsterNum = 0;
 

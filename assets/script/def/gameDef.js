@@ -39,6 +39,18 @@ GameDef.MonsterType = {
     Crazy: 4
 };
 
+GameDef.MonsterScoreStatus = {
+
+
+};
+
+GameDef.ColliderGroup = {
+    Default: "default",
+    Monster: "monster",
+    Person: "person",
+    Wall: "wall"
+};
+
 
 GameDef.MonsterLowArray = [
     {
@@ -58,7 +70,7 @@ GameDef.MonsterLowArray = [
     },
     {
         type: GameDef.MonsterType.Low,
-        path: "GUI/monster/low3_250_100",
+        path: "GUI/monster/low4_250_100",
         name: "monsterMove"
     }
 ];
@@ -77,6 +89,7 @@ GameDef.MonsterMiddleArray = [
 ];
 
 
+// kick
 GameDef.MonsterTallArray = [
     {
         type: GameDef.MonsterType.Tall,
@@ -101,6 +114,7 @@ GameDef.MonsterTallArray = [
 ];
 
 
+// lift
 GameDef.MonsterSuperArray = [
     {
         type: GameDef.MonsterType.Super,
@@ -114,6 +128,7 @@ GameDef.MonsterSuperArray = [
     },
 ];
 
+// spade
 GameDef.MonsterCrazyArray = [
     {
         type: GameDef.MonsterType.Crazy,
@@ -128,5 +143,11 @@ GameDef.MonsterMap[GameDef.MonsterType.Middle] = GameDef.MonsterMiddleArray;
 GameDef.MonsterMap[GameDef.MonsterType.Tall] = GameDef.MonsterTallArray;
 GameDef.MonsterMap[GameDef.MonsterType.Super] = GameDef.MonsterSuperArray;
 GameDef.MonsterMap[GameDef.MonsterType.Crazy] = GameDef.MonsterCrazyArray;
+
+GameDef.MonsterMessage = {
+    Can_kick: "can_kick",
+    Can_lift: "can_lift",
+    Can_spade: "can_spade"
+};
 
 module.exports = GameDef;

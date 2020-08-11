@@ -1,5 +1,6 @@
 let singleton = require("singleton");
 let userData = require("userData");
+let gameData = require("gameData");
 let loadManager = require("loadManager");
 
 cc.Class({
@@ -20,6 +21,7 @@ cc.Class({
 
     onDestroy () {
         singleton.userData.release();
+        singleton.gameData.release();
     },
 
     start () {
@@ -48,11 +50,8 @@ cc.Class({
     },
 
     initGameData () {
-        if (singleton.userData) {
-            delete singleton.curGameMode;
-            singleton.curGameMode = null;
-        }
         singleton.userData = new userData();
+        singleton.gameData = new gameData();
     },
 
     initGameUtils () {
