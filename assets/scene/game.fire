@@ -207,7 +207,7 @@
       "array": [
         0,
         0,
-        222.72240635056855,
+        221.7025033688163,
         0,
         0,
         0,
@@ -418,7 +418,7 @@
       "array": [
         0,
         0,
-        222.72240635056855,
+        221.7025033688163,
         0,
         0,
         0,
@@ -635,7 +635,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -436.24,
+        -505.656,
         926.689,
         0,
         0,
@@ -742,7 +742,7 @@
       "y": 0
     },
     "_angularVelocity": 0,
-    "_fixedRotation": false,
+    "_fixedRotation": true,
     "enabledContactListener": false,
     "bullet": false,
     "awakeOnLoad": true,
@@ -1224,9 +1224,6 @@
       "__id__": 2
     },
     "_enabled": true,
-    "nodePerson": {
-      "__id__": 15
-    },
     "_id": "36NUmCmjhI/KsT1wKfn6ci"
   }
 ]

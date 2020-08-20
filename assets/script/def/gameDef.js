@@ -145,6 +145,7 @@ GameDef.MonsterMap[GameDef.MonsterType.Super] = GameDef.MonsterSuperArray;
 GameDef.MonsterMap[GameDef.MonsterType.Crazy] = GameDef.MonsterCrazyArray;
 
 GameDef.MonsterMessage = {
+    Normal: "normal",
     Can_kick: "can_kick",
     Can_lift: "can_lift",
     Can_spade: "can_spade"

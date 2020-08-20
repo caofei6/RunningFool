@@ -7,6 +7,9 @@ var gameDef = require("gameDef");
 var eventCenter = require("eventCenter");
 var eventDef = require("eventDef");
 
+var gameMonster = {};
+gameMonster.destroyPosX = -1250;
+
 cc.Class({
     extends: cc.Component,
 
@@ -72,10 +75,15 @@ cc.Class({
     },
 
     initMonsterScoreStatus () {
-        this.node.monsterScoreStatus ;
+        this.node.canAddScore = true;
     },
 
     initMonsterCtr () {
+        // 普通怪
+        if(this.monsterType === gameDef.MonsterType.Low || this.monsterType === gameDef.MonsterType.Middle) {
+            this.node.message = gameDef.MonsterMessage.Normal;
+        }
+
         // 高怪，可以踢开
         if(this.monsterType === gameDef.MonsterType.Tall) {
             this.node.message = gameDef.MonsterMessage.Can_kick;
@@ -101,16 +109,25 @@ cc.Class({
     onBeginContact (contact, selfCollider, otherCollider) {
         if(selfCollider.node.group !== gameDef.ColliderGroup.Monster || otherCollider.node.group !== gameDef.ColliderGroup.Person) return;
 
-        if(this.monsterType === gameDef.MonsterType.Middle) {
+        var message = selfCollider.node.message;
+        switch (message) {
+            case gameDef.MonsterMessage.Normal:
+                break;
+            case gameDef.MonsterMessage.Can_kick:
+                break;
+            case gameDef.MonsterMessage.Can_spade:
+                break;
+            case gameDef.MonsterMessage.Can_lift:
+                break;
 
         }
-
-        // if(this.monsterType === )
+        console.log("PPPPPPPPPP   " + selfCollider.node.message);
 
     },
 
     countScore () {
-        if(singleton.gameMgr.checkIsGetScore(this.node)) {
+        if(singleton.gameMgr.checkIsGetScore(this.node) && this.node.canAddScore) {
+            this.node.canAddScore = false;
             singleton.gameData.addGameScore();
             eventCenter.emitEvent(eventDef.Update_GameScore);
         }
@@ -118,7 +135,7 @@ cc.Class({
 
     destoryMonster () {
         if(!this.node) return;
-        if(this.node.x <= -200) {
+        if(this.node.x <= gameMonster.destroyPosX) {
             this.node.destroy();
         }
     }
