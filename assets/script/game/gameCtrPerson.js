@@ -89,6 +89,7 @@ cc.Class({
 
         if (this.personStation !== station) {
             this.personStation = station;
+            singleton.personStation = station;
         }
     },
 
