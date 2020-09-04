@@ -52,57 +52,51 @@ cc.Class({
     },
 
     onTouchScreenMove (event) {
-        this.personStation = gameDef.PersonStation.Run;
-        var station = this.personStation;
+        singleton.personStation = gameDef.PersonStation.Run;
         var changePosX = event.getDeltaX();
         var changePosY = event.getDeltaY();
 
         var value = this.minChangeValue;
         if (changePosX > value && changePosY > value) {
-            station = gameDef.PersonStation.JumpRun;
+            singleton.personStation = gameDef.PersonStation.JumpRun;
         }
         else if (changePosX < value && changePosY > value) {
-            if (station !== gameDef.PersonStation.JumpBack) {
-                station = gameDef.PersonStation.JumpBack;
+            if (singleton.personStation !== gameDef.PersonStation.JumpBack) {
+                singleton.personStation = gameDef.PersonStation.JumpBack;
             }
         }
         else if (changePosX < value && changePosY < 0) {
-            if (station !== gameDef.PersonStation.Kneel) {
-                station = gameDef.PersonStation.Kneel;
+            if (singleton.personStation !== gameDef.PersonStation.Kneel) {
+                singleton.personStation = gameDef.PersonStation.Kneel;
             }
         }
         else if (changePosX > value) {
-            if (station !== gameDef.PersonStation.Run) {
-                station = gameDef.PersonStation.Run;
+            if (singleton.personStation !== gameDef.PersonStation.Run) {
+                singleton.personStation = gameDef.PersonStation.Run;
             }
         }
         else if (changePosX < value) {
-            if (station !== gameDef.PersonStation.Back) {
-                station = gameDef.PersonStation.Back;
+            if (singleton.personStation !== gameDef.PersonStation.Back) {
+                singleton.personStation = gameDef.PersonStation.Back;
             }
         }
         else if (changePosY > value) {
-            if (station !== gameDef.PersonStation.Jump) {
-                station = gameDef.PersonStation.Jump;
+            if (singleton.personStation !== gameDef.PersonStation.Jump) {
+                singleton.personStation = gameDef.PersonStation.Jump;
             }
-        }
-
-        if (this.personStation !== station) {
-            this.personStation = station;
-            singleton.personStation = station;
         }
     },
 
     onTouchScreenEnd () {
         this.ctrPersonMove = false;
-        this.updatePersonAnim(this.personStation);
-        this.updatePersonMove(this.personStation);
+        this.updatePersonAnim(singleton.personStation);
+        this.updatePersonMove(singleton.personStation);
     },
 
     onTouchPerson () {
-        this.personStation = gameDef.PersonStation.Kick;
-        this.updatePersonAnim(this.personStation, true);
-        this.updatePersonMove(this.personStation);
+        singleton.personStation = gameDef.PersonStation.Kick;
+        this.updatePersonAnim(singleton.personStation, true);
+        this.updatePersonMove(singleton.personStation);
     },
 
     updatePersonMove (station) {

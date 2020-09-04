@@ -33,6 +33,11 @@ cc.Class({
             default: null,
             type: cc.Animation
         },
+
+        Widget: {
+            default: null,
+            type: cc.Widget
+        }
     },
 
     update () {
@@ -46,6 +51,7 @@ cc.Class({
         this.animName = params.animName;
         this.baseVelocityX = params.baseVelocityX;
         this.monsterType = params.monsterType;
+        this.controlMonster = false;
         this.initImageAndCollider();
         this.initMonsterMove();
         this.initMonsterType();
@@ -71,6 +77,7 @@ cc.Class({
     },
 
     initMonsterMove () {
+        if(this.controlMonster) return;
         this.RigidBody.linearVelocity = cc.v2(-500, 0);
     },
 
@@ -97,7 +104,7 @@ cc.Class({
         // 超级怪，可以点击怪物抬起
         if(this.monsterType === gameDef.MonsterType.Super) {
             var liftMonster = function () {
-                this.node.y += 200;
+
                 this.node.off(cc.Node.EventType.TOUCH_START, liftMonster.bind(this), this);
             };
             this.node.message = gameDef.MonsterMessage.Can_lift;
@@ -114,6 +121,10 @@ cc.Class({
             case gameDef.MonsterMessage.Normal:
                 break;
             case gameDef.MonsterMessage.Can_kick:
+                if(singleton.personStation === gameDef.PersonStation.Kick) {
+                    this.controlMonster = true;
+                    this.RigidBody.linearVelocity = cc.v2(400, 300);
+                }
                 break;
             case gameDef.MonsterMessage.Can_spade:
                 break;
@@ -121,7 +132,6 @@ cc.Class({
                 break;
 
         }
-        console.log("PPPPPPPPPP   " + selfCollider.node.message);
 
     },
 

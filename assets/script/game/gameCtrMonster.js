@@ -53,7 +53,7 @@ cc.Class({
         data.baseVelocityX = this.baseVelocityX;
         var monsterNode = cc.instantiate(this.PrefabMonster);
         monsterNode.getComponent(gameMonster).init(data);
-        monsterNode.setPosition(cc.v2(1000, -100));
+        monsterNode.setPosition(cc.v2(1000, 0));
         this.NodeRoot.addChild(monsterNode);
         this.curMonsterNum++;
     },
