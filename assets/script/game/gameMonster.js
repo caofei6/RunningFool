@@ -9,6 +9,7 @@ var eventDef = require("eventDef");
 
 var gameMonster = {};
 gameMonster.destroyPosX = -1250;
+gameMonster.moveSpeed = cc.v2(-500, 0);
 
 cc.Class({
     extends: cc.Component,
@@ -34,14 +35,13 @@ cc.Class({
             type: cc.Animation
         },
 
-        Widget: {
+        MonWidget: {
             default: null,
             type: cc.Widget
         }
     },
 
     update () {
-        this.initMonsterMove();
         this.countScore();
         this.destoryMonster();
     },
@@ -51,12 +51,12 @@ cc.Class({
         this.animName = params.animName;
         this.baseVelocityX = params.baseVelocityX;
         this.monsterType = params.monsterType;
-        this.controlMonster = false;
         this.initImageAndCollider();
-        this.initMonsterMove();
         this.initMonsterType();
         this.initMonsterCtr();
+        // this.initMonsterMove();
         this.initMonsterScoreStatus();
+        this.node.controlMonster = false;
     },
 
     initImageAndCollider() {
@@ -65,6 +65,12 @@ cc.Class({
             this.PhysicsBoxCollider.size = originSize;
             this.PhysicsBoxCollider.apply();
         }.bind(this));
+    },
+
+    resetPosition () {
+        // this.MonWidget.bottom = 50;
+        // this.MonWidget.updateAlignment();
+        this.node.x = 20;
     },
 
     initAnimationByName () {
@@ -77,8 +83,7 @@ cc.Class({
     },
 
     initMonsterMove () {
-        if(this.controlMonster) return;
-        this.RigidBody.linearVelocity = cc.v2(-500, 0);
+
     },
 
     initMonsterScoreStatus () {
@@ -103,12 +108,12 @@ cc.Class({
 
         // 超级怪，可以点击怪物抬起
         if(this.monsterType === gameDef.MonsterType.Super) {
+            var self = this;
             var liftMonster = function () {
 
-                this.node.off(cc.Node.EventType.TOUCH_START, liftMonster.bind(this), this);
             };
             this.node.message = gameDef.MonsterMessage.Can_lift;
-            this.node.on(cc.Node.EventType.TOUCH_START, liftMonster.bind(this), this);
+            this.node.on(cc.Node.EventType.TOUCH_START, liftMonster, this);
         }
     },
 

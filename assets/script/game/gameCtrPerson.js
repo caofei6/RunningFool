@@ -95,8 +95,11 @@ cc.Class({
 
     onTouchPerson () {
         singleton.personStation = gameDef.PersonStation.Kick;
-        this.updatePersonAnim(singleton.personStation, true);
-        this.updatePersonMove(singleton.personStation);
+
+        this.RigidBody.applyForceToCenter(cc.v2(0, 50000));
+
+        // this.updatePersonAnim(singleton.personStation, true);
+        // this.updatePersonMove(singleton.personStation);
     },
 
     updatePersonMove (station) {

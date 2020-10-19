@@ -42,7 +42,8 @@ cc.Class({
         if (!this.PrefabMonster) return;
 
         let monsterTypeNum = Object.keys(gameDef.MonsterType).length;
-        let monsterType = this.getRandomNum(0, monsterTypeNum - 1);
+        // let monsterType = this.getRandomNum(0, monsterTypeNum - 1);
+        let monsterType = 3
         let monsterArr = gameDef.MonsterMap[monsterType];
         let monsterData = monsterArr[this.getRandomNum(0, monsterArr.length - 1)];
 
@@ -52,9 +53,10 @@ cc.Class({
         data.monsterType = monsterData.type;
         data.baseVelocityX = this.baseVelocityX;
         var monsterNode = cc.instantiate(this.PrefabMonster);
-        monsterNode.getComponent(gameMonster).init(data);
-        monsterNode.setPosition(cc.v2(1000, 0));
+        var nodeScript = monsterNode.getComponent(gameMonster);
+        nodeScript.init(data);
         this.NodeRoot.addChild(monsterNode);
+        nodeScript.resetPosition();
         this.curMonsterNum++;
     },
 
