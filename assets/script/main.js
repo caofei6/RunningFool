@@ -1,6 +1,7 @@
 let singleton = require("singleton");
 let userData = require("userData");
 let gameData = require("gameData");
+let danmuData = require("danmuData");
 let loadManager = require("loadManager");
 
 cc.Class({
@@ -22,6 +23,7 @@ cc.Class({
     onDestroy () {
         singleton.userData.release();
         singleton.gameData.release();
+        singleton.danmuData.release();
     },
 
     start () {
@@ -52,6 +54,7 @@ cc.Class({
     initGameData () {
         singleton.userData = new userData();
         singleton.gameData = new gameData();
+        singleton.danmuData = new danmuData();
     },
 
     initGameUtils () {
