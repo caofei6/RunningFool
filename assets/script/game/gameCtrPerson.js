@@ -25,8 +25,8 @@ cc.Class({
         }
     },
 
-    update () {
-
+    start () {
+        singleton.NodePerson = this.node;
     },
 
     onLoad () {

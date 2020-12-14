@@ -6,6 +6,7 @@ var singleton = require("singleton");
 var gameDef = require("gameDef");
 var eventCenter = require("eventCenter");
 var eventDef = require("eventDef");
+var utils = require("utils");
 
 var gameMonster = {};
 gameMonster.destroyPosX = -1250;
@@ -20,30 +21,17 @@ cc.Class({
             type: cc.Sprite
         },
 
-        RigidBody: {
-            default: null,
-            type: cc.RigidBody
-        },
-
-        PhysicsBoxCollider: {
-            default: null,
-            type: cc.PhysicsBoxCollider
-        },
-
         Animation: {
             default: null,
             type: cc.Animation
         },
-
-        MonWidget: {
-            default: null,
-            type: cc.Widget
-        }
     },
 
-    update () {
+    update (dt) {
         this.countScore();
         this.destoryMonster();
+        this.moveMonster(dt);
+        this.checkCollision();
     },
 
     init (params) {
@@ -51,43 +39,27 @@ cc.Class({
         this.animName = params.animName;
         this.baseVelocityX = params.baseVelocityX;
         this.monsterType = params.monsterType;
+        this.node.canAddScore = true;
         this.initImageAndCollider();
-        this.initMonsterType();
+        this.initMonsterPosition();
         this.initMonsterCtr();
-        // this.initMonsterMove();
-        this.initMonsterScoreStatus();
-        this.node.controlMonster = false;
     },
 
     initImageAndCollider() {
         if (!this.imagePath || !this.SpriteMonster) return;
-        singleton.loadManager.loadSpriteFrame(this.SpriteMonster, this.imagePath, this, function (originSize) {
-            this.PhysicsBoxCollider.size = originSize;
-            this.PhysicsBoxCollider.apply();
-        }.bind(this));
+        singleton.loadManager.loadSpriteFrame(this.SpriteMonster, this.imagePath, this);
     },
 
-    resetPosition () {
-        // this.MonWidget.bottom = 50;
-        // this.MonWidget.updateAlignment();
-        this.node.x = 20;
+    initMonsterPosition () {
+        var size = utils.getCanvasSize();
+        var gap = 50;
+        this.node.x = size.width / 2 + 3 * gap;
+        this.node.y = singleton.nodeGrass.height - size.height / 2 - gap;
     },
 
     initAnimationByName () {
         if (!this.animName || !this.Animation) return;
         this.Animation.play(this.animName);
-    },
-
-    initMonsterType () {
-        this.node.monsterType = this.monsterType;
-    },
-
-    initMonsterMove () {
-
-    },
-
-    initMonsterScoreStatus () {
-        this.node.canAddScore = true;
     },
 
     initMonsterCtr () {
@@ -117,28 +89,43 @@ cc.Class({
         }
     },
 
+    // 移动怪物
+    moveMonster (dt) {
+        this.node.x -= dt * 180;
+    },
+
+    checkCollision () {
+        var ret = utils.collision(singleton.NodePerson, this.node);
+        if(ret) {
+            console.log("zhuang  daole ")
+        }
+    },
+
     // 只在两个碰撞体开始接触时被调用一次
     onBeginContact (contact, selfCollider, otherCollider) {
-        if(selfCollider.node.group !== gameDef.ColliderGroup.Monster || otherCollider.node.group !== gameDef.ColliderGroup.Person) return;
-
-        var message = selfCollider.node.message;
-        switch (message) {
-            case gameDef.MonsterMessage.Normal:
-                break;
-            case gameDef.MonsterMessage.Can_kick:
-                if(singleton.personStation === gameDef.PersonStation.Kick) {
-                    this.controlMonster = true;
-                    this.RigidBody.linearVelocity = cc.v2(400, 300);
-                }
-                break;
-            case gameDef.MonsterMessage.Can_spade:
-                break;
-            case gameDef.MonsterMessage.Can_lift:
-                break;
-
-        }
+        // if(selfCollider.node.group !== gameDef.ColliderGroup.Monster || otherCollider.node.group !== gameDef.ColliderGroup.Person) return;
+        //
+        // var message = selfCollider.node.message;
+        // switch (message) {
+        //     case gameDef.MonsterMessage.Normal:
+        //         break;
+        //     case gameDef.MonsterMessage.Can_kick:
+        //         if(singleton.personStation === gameDef.PersonStation.Kick) {
+        //             this.controlMonster = true;
+        //             this.RigidBody.linearVelocity = cc.v2(400, 300);
+        //         }
+        //         break;
+        //     case gameDef.MonsterMessage.Can_spade:
+        //         break;
+        //     case gameDef.MonsterMessage.Can_lift:
+        //         break;
+        //
+        // }
 
     },
+
+
+
 
     countScore () {
         if(singleton.gameMgr.checkIsGetScore(this.node) && this.node.canAddScore) {
@@ -149,10 +136,10 @@ cc.Class({
     },
 
     destoryMonster () {
-        if(!this.node) return;
-        if(this.node.x <= gameMonster.destroyPosX) {
-            this.node.destroy();
-        }
+        // if(!this.node) return;
+        // if(this.node.x <= gameMonster.destroyPosX) {
+        //     this.node.destroy();
+        // }
     }
 
 });

@@ -29,6 +29,7 @@ cc.Class({
         this.grassMoveMinX = -3500;
         this.grassMoveStep = 10;
 
+        this.monsterPoolMaxNum = 10;
         this.monsterCreateTime = 20;
         this.monsterMaxNum = 5;
         this.curMonsterNum = 0;

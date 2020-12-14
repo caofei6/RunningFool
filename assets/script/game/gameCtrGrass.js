@@ -2,6 +2,7 @@
  * gameGrass控制脚本
  */
 var gameCtrBase = require("gameCtrBase");
+var singleton = require("singleton");
 
 cc.Class({
     extends: gameCtrBase,
@@ -11,6 +12,10 @@ cc.Class({
             type: cc.RigidBody,
             default: null
         }
+    },
+
+    start () {
+        singleton.nodeGrass = this.node;
     },
 
     update () {
