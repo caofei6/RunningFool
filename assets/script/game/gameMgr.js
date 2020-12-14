@@ -7,10 +7,6 @@ cc.Class({
         singleton.gameMgr = this;
     },
 
-    start () {
-
-    },
-
     checkIsGetScore (nodeMonster) {
         if(!singleton.nodePerson || !nodeMonster) return;
         return nodeMonster.x < singleton.nodePerson.x;

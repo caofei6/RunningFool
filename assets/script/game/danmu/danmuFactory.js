@@ -1,9 +1,9 @@
 var singleton = require("singleton");
 var eventCenter = require("eventCenter");
 var danmuItem = require("danmuItem");
+var danmuDef = require("danmuDef");
 var eventDef = require("eventDef");
-
-
+var utils = require("utils");
 const INIT_DANMU_COUNT = 10;
 
 cc.Class({
@@ -17,7 +17,7 @@ cc.Class({
     },
 
     ctor () {
-
+        this.clearDanMuNodePool();
     },
 
     onLoad () {
@@ -42,8 +42,24 @@ cc.Class({
     initDanMuFactory () {
         let self = this;
         var factoryCenter = function () {
-            
+            var status0 = singleton.danmuData.getChannelStatusByIdx(0);
+            var status1 = singleton.danmuData.getChannelStatusByIdx(1);
+            var status2 = singleton.danmuData.getChannelStatusByIdx(2);
+            var status3 = singleton.danmuData.getChannelStatusByIdx(3);
+            if(status0 === danmuDef.ChannelStatus.Free) {
+                self.createDanMuNode(0);
+            }
+            if(status1 === danmuDef.ChannelStatus.Free) {
+                self.createDanMuNode(1);
+            }
+            if(status2 === danmuDef.ChannelStatus.Free) {
+                self.createDanMuNode(2);
+            }
+            if(status3 === danmuDef.ChannelStatus.Free) {
+                self.createDanMuNode(3);
+            }
         }
+        this.schedule(factoryCenter, 0);
     },
 
     initDanMuPool () {
@@ -55,8 +71,19 @@ cc.Class({
         }
     },
 
-    createDanMuNode (param) {
+    createDanMuNode (idx) {
         if(!this.prefabDanMuItem) return;
+        var contentStr = singleton.danmuData.popDanMuFromDataPool();
+        if(!contentStr) return;
+        singleton.danmuData.setChannelStatus(idx, danmuDef.ChannelStatus.Busy);
+
+        var param = {
+            idx: idx,
+            content: contentStr,
+            danMuNodePool: this.danMuNodePool
+        }
+
+        let time = utils.randomFloatNum(0, 0.8);
         let danMuNode = null;
         if(this.danMuNodePool.size() > 0) {
             danMuNode = this.danMuNodePool.get();
@@ -64,8 +91,12 @@ cc.Class({
         else {
             danMuNode = cc.instantiate(this.prefabDanMuItem);
         }
-        danMuNode.parent = this.node;
-        danMuNode.getComponent(danmuItem).init(param);
+
+        this.scheduleOnce(() => {
+            danMuNode.parent = this.node;
+            danMuNode.getComponent(danmuItem).init(param);
+        }, time)
+
     },
 
     clearDanMuNodePool () {

@@ -25,9 +25,13 @@
       }
     ],
     "_active": true,
-    "_components": [],
+    "_components": [
+      {
+        "__id__": 8
+      }
+    ],
     "_prefab": {
-      "__id__": 8
+      "__id__": 9
     },
     "_opacity": 255,
     "_color": {
@@ -44,8 +48,8 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
+      "x": 0,
+      "y": 0
     },
     "_trs": {
       "__type__": "TypedArray",
@@ -108,8 +112,8 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
+      "x": 0,
+      "y": 0
     },
     "_trs": {
       "__type__": "TypedArray",
@@ -217,8 +221,8 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
+      "x": 0,
+      "y": 0
     },
     "_trs": {
       "__type__": "TypedArray",
@@ -265,9 +269,9 @@
     "_lineWidth": 2,
     "_strokeColor": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 223,
+      "g": 201,
+      "b": 39,
       "a": 255
     },
     "_lineJoin": 2,
@@ -292,6 +296,22 @@
     },
     "fileId": "9bEmjKy3hNP5F4UwnPqsIl",
     "sync": false
+  },
+  {
+    "__type__": "13fe9oAGwxHPLhgAtHu5Uu4",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "labelContent": {
+      "__id__": 3
+    },
+    "drawGraphics": {
+      "__id__": 6
+    },
+    "_id": ""
   },
   {
     "__type__": "cc.PrefabInfo",
