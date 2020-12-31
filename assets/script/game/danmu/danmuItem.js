@@ -22,7 +22,7 @@ cc.Class({
         this.data = data;
         this.isChange = false;
         this.idx = this.data.idx;
-        this.speed = this.data.speed || 180;
+        this.speed = this.data.speed || 230;
         this.danMuNodePool = this.data.danMuNodePool;
         this.canvansSize = cc.director.getScene().getChildByName("Canvas");
         this.initDanMuPosition(data);
@@ -45,7 +45,7 @@ cc.Class({
             this.labelContent.string = data.content || '';
         }
 
-        if(this.drawGraphics) {
+        if(this.drawGraphics && this.data.isFocus) {
             this.scheduleOnce(() => {
                 var w = this.labelContent.node.width;
                 var h = this.labelContent.node.height;
@@ -64,10 +64,6 @@ cc.Class({
     destroyDanmu () {
         if(!this.node || !this.danMuNodePool) return;
         this.danMuNodePool.put(this.node);
-    },
-
-
-    setChannelStatus (status) {
     },
 
     unuse () {

@@ -1,7 +1,11 @@
 /***
  * gameCtr基类
  */
-cc.Class({
+var eventCenter = require("eventCenter");
+var eventDef = require("eventDef");
+var singleton = require("singleton");
+
+var gameCtrBase = cc.Class({
     extends: cc.Component,
 
     properties: {
@@ -9,12 +13,23 @@ cc.Class({
     },
 
     onLoad () {
+        this.registerEvent();
         this.initPlayerNode();
         this.initPlayData();
     },
 
     onDestroy () {
+        this.unregisterEvent();
+    },
 
+    registerEvent () {
+        eventCenter.addEventObserver(eventDef.GameOver, this.onGameOver, this);
+        eventCenter.addEventObserver(eventDef.AddScore, this.addScore, this);
+    },
+
+    unregisterEvent () {
+        eventCenter.removeEventObserver(eventDef.GameOver, this.onGameOver, this);
+        eventCenter.removeEventObserver(eventDef.AddScore, this.addScore, this);
     },
 
     initPlayData () {
@@ -51,4 +66,19 @@ cc.Class({
     update () {
         this.curFrame ++;
     },
+
+    onGameOver () {
+        this.ctrBg = false
+        this.ctrGrass = false;
+        this.ctrCamera = false;
+        this.ctrMonster = false;
+    },
+
+    addScore () {
+        singleton.gameData.addGameScore();
+        eventCenter.emitEvent(eventDef.Update_GameScore);
+    },
 });
+
+
+module.exports = gameCtrBase;

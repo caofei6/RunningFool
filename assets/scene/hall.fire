@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        224.30057958016963,
+        219.104427157463,
         0,
         0,
         0,
@@ -1363,7 +1363,7 @@
       "__id__": 2
     },
     "_enabled": true,
-    "isDebug": true,
+    "isDebug": false,
     "_id": "50NWGVK1RBnrCVOIeiL9N2"
   },
   {

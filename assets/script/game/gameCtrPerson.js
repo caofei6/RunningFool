@@ -4,6 +4,8 @@
 var gameCtrBase = require("gameCtrBase");
 var gameDef = require("gameDef");
 var singleton = require("singleton");
+var eventDef = require("eventDef");
+var eventCenter = require("eventCenter");
 
 cc.Class({
     extends: gameCtrBase,
@@ -22,16 +24,17 @@ cc.Class({
         Animation: {
             type: cc.Animation,
             default: null
-        }
+        },
     },
 
     start () {
         singleton.NodePerson = this.node;
     },
 
+
     onLoad () {
         this._super();
-        this.minChangeValue = 2;
+        eventCenter.addEventObserver(eventDef.GameOver, this.onGameOver, this);
         this.NodeCanvas.on(cc.Node.EventType.TOUCH_START, this.onTouchScreenStart, this);
         this.NodeCanvas.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchScreenMove, this);
         this.NodeCanvas.on(cc.Node.EventType.TOUCH_END, this.onTouchScreenEnd, this);
@@ -40,113 +43,104 @@ cc.Class({
     },
 
     onDestroy () {
+        eventCenter.removeEventObserver(eventDef.GameOver, this.onGameOver, this);
         this.NodeCanvas.off(cc.Node.EventType.TOUCH_START, this.onTouchScreenStart, this);
         this.NodeCanvas.off(cc.Node.EventType.TOUCH_MOVE, this.onTouchScreenMove, this);
         this.NodeCanvas.off(cc.Node.EventType.TOUCH_END, this.onTouchScreenEnd, this);
         this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchPerson, this);
     },
 
-    onTouchScreenStart () {
-        if(this.ctrPersonMove) return;
-        this.ctrPersonMove = true;
+    onTouchScreenStart (event) {
+        let location = event.getLocation();
+        this.firstX = location.x;
+        this.firstY = location.y;
     },
 
     onTouchScreenMove (event) {
-        singleton.personStation = gameDef.PersonStation.Run;
-        var changePosX = event.getDeltaX();
-        var changePosY = event.getDeltaY();
 
-        var value = this.minChangeValue;
-        if (changePosX > value && changePosY > value) {
-            singleton.personStation = gameDef.PersonStation.JumpRun;
-        }
-        else if (changePosX < value && changePosY > value) {
-            if (singleton.personStation !== gameDef.PersonStation.JumpBack) {
+    },
+
+    onTouchScreenEnd (event) {
+        let touchPoint = event.getLocation();
+        let endX = touchPoint.x - this.firstX;
+        let endY = touchPoint.y - this.firstY;
+        if(endX === 0 && endX === 0) return;
+
+        // 左右跳动操作
+        if (Math.abs(endX) > Math.abs(endY)){
+            if (endX > 0){
+                singleton.personStation = gameDef.PersonStation.JumpRun;
+            }
+
+            if (endX < 0){
                 singleton.personStation = gameDef.PersonStation.JumpBack;
             }
         }
-        else if (changePosX < value && changePosY < 0) {
-            if (singleton.personStation !== gameDef.PersonStation.Kneel) {
-                singleton.personStation = gameDef.PersonStation.Kneel;
-            }
-        }
-        else if (changePosX > value) {
-            if (singleton.personStation !== gameDef.PersonStation.Run) {
-                singleton.personStation = gameDef.PersonStation.Run;
-            }
-        }
-        else if (changePosX < value) {
-            if (singleton.personStation !== gameDef.PersonStation.Back) {
-                singleton.personStation = gameDef.PersonStation.Back;
-            }
-        }
-        else if (changePosY > value) {
-            if (singleton.personStation !== gameDef.PersonStation.Jump) {
+        // 上下跳动操作
+        else {
+            if (endY > 0){
                 singleton.personStation = gameDef.PersonStation.Jump;
             }
-        }
-    },
 
-    onTouchScreenEnd () {
-        this.ctrPersonMove = false;
+            if (endY < 0){
+                singleton.personStation = gameDef.PersonStation.Slip;
+            }
+        }
+
         this.updatePersonAnim(singleton.personStation);
-        this.updatePersonMove(singleton.personStation);
+        this.updatePersonMove();
     },
 
     onTouchPerson () {
         singleton.personStation = gameDef.PersonStation.Kick;
-
-        this.RigidBody.applyForceToCenter(cc.v2(0, 50000));
-
-        // this.updatePersonAnim(singleton.personStation, true);
-        // this.updatePersonMove(singleton.personStation);
+        this.updatePersonAnim(singleton.personStation);
+        this.updatePersonMove();
     },
 
-    updatePersonMove (station) {
-        if (station === undefined) return;
-        switch (station) {
-            case gameDef.PersonStation.Run:
-                this.RigidBody.linearVelocity = cc.v2(this.baseVelocityX, 0);
-                console.log("向右");
-                break;
-            case gameDef.PersonStation.Back:
-                this.RigidBody.linearVelocity = cc.v2(-this.baseVelocityX, 0);
-                console.log("向左");
+    updatePersonMove () {
+        var linearVelocity = this.RigidBody.linearVelocity;
+        if (linearVelocity.x !== 0 || linearVelocity.y !== 0) return;
+
+        if (singleton.personStation === undefined || singleton.personStation === gameDef.PersonStation.Stop) return;
+        switch (singleton.personStation) {
+            case gameDef.PersonStation.Stop:
+                this.RigidBody.linearVelocity = cc.v2(0, 0);
                 break;
             case gameDef.PersonStation.Jump:
                 this.RigidBody.linearVelocity = cc.v2(0, this.baseVelocityY);
-                console.log("向跳");
                 break;
             case gameDef.PersonStation.JumpRun:
                 this.RigidBody.linearVelocity = cc.v2(this.baseVelocityX/2, this.baseVelocityY);
-                console.log("向前跳");
                 break;
             case gameDef.PersonStation.JumpBack:
                 this.RigidBody.linearVelocity = cc.v2(-this.baseVelocityX/2, this.baseVelocityY);
-                console.log("向后跳");
                 break;
             case gameDef.PersonStation.Kick:
                 this.RigidBody.linearVelocity = cc.v2(0, 0);
-                console.log("踢");
                 break;
-
         }
     },
 
-    updatePersonAnim (station, isRecover) {
+    updatePersonAnim (station) {
         if(!this.Animation) return;
         var animName = gameDef.PersonAnimNameMap[station];
-        this.Animation.play(animName);
-        this.Animation.off("finished", this.onFinsihAnim, this);
-        if(isRecover) {
-            this.Animation.on("finished", this.onFinsihAnim, this);
+        var onFinsihAnim = () => {
+            if(!this.Animation) return;
+            var animName = gameDef.PersonAnimNameMap[gameDef.PersonStation.Run];
+            this.Animation.play(animName);
+            this.Animation.off("finished", onFinsihAnim, this);
+            singleton.personStation = gameDef.PersonStation.Stop;
+        }
+
+        if (animName) {
+            this.Animation.play(animName);
+            this.Animation.on("finished", onFinsihAnim, this);
         }
     },
 
-    onFinsihAnim () {
-        if(!this.Animation) return;
-        var animName = gameDef.PersonAnimNameMap[gameDef.PersonStation.Run];
-        this.Animation.play(animName);
+
+    onGameOver () {
+        this.updatePersonAnim(singleton.personStation.Death);
     },
 
     initNodePerson () {
@@ -154,6 +148,7 @@ cc.Class({
             delete singleton.nodePerson;
             singleton.nodePerson = null;
         }
+        singleton.personStation = gameDef.PersonStation.Stop;
         singleton.nodePerson = this.node;
     }
 });

@@ -107,7 +107,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 583.36,
+      "width": 437.52,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -162,7 +162,7 @@
     "_useOriginalSize": false,
     "_string": "我是弹幕，我真的是弹幕，嘻嘻~",
     "_N$string": "我是弹幕，我真的是弹幕，嘻嘻~",
-    "_fontSize": 40,
+    "_fontSize": 30,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,

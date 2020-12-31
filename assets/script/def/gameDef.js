@@ -1,12 +1,19 @@
 
 let GameDef = {};
 
+GameDef.Group = {
+    Default: "default",
+    Monster: "monster",
+    Person: "person"
+}
+
 GameDef.Mode = {
     Normal: 0,
     Crazy: 1
 };
 
 GameDef.PersonStation = {
+    Stop: -1,     // 停止
     Jump: 0,      // 跳
     Kneel: 1,     // 跪
     Back: 2,      // 后退
@@ -20,12 +27,8 @@ GameDef.PersonStation = {
 
 
 GameDef.PersonAnimNameMap = {};
-GameDef.PersonAnimNameMap[GameDef.PersonStation.Jump] = "personRunning";
+GameDef.PersonAnimNameMap[GameDef.PersonStation.Stop] = "personRunning";
 GameDef.PersonAnimNameMap[GameDef.PersonStation.Kneel] = "personKneel";
-GameDef.PersonAnimNameMap[GameDef.PersonStation.Back] = "personRunning";
-GameDef.PersonAnimNameMap[GameDef.PersonStation.Run] = "personRunning";
-GameDef.PersonAnimNameMap[GameDef.PersonStation.JumpRun] = "personRunning";
-GameDef.PersonAnimNameMap[GameDef.PersonStation.JumpBack] = "personRunning";
 GameDef.PersonAnimNameMap[GameDef.PersonStation.Kick] = "personKick";
 GameDef.PersonAnimNameMap[GameDef.PersonStation.Slip] = "personSlip";
 GameDef.PersonAnimNameMap[GameDef.PersonStation.Death] = "personFail";

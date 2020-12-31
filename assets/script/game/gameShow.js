@@ -41,7 +41,7 @@ cc.Class({
 
     initDanmu () {
         var info = singleton.userData.getUserWxData();
-        var name = info ? info.nickName : "惠敏";
+        var name = info ? info.nickName : "铁子";
         var param = {
             contentStr: "您好呀，" + name + "同学"
         }

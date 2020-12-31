@@ -46,17 +46,17 @@ cc.Class({
             var status1 = singleton.danmuData.getChannelStatusByIdx(1);
             var status2 = singleton.danmuData.getChannelStatusByIdx(2);
             var status3 = singleton.danmuData.getChannelStatusByIdx(3);
-            if(status0 === danmuDef.ChannelStatus.Free) {
-                self.createDanMuNode(0);
-            }
-            if(status1 === danmuDef.ChannelStatus.Free) {
-                self.createDanMuNode(1);
+            if(status3 === danmuDef.ChannelStatus.Free) {
+                self.createDanMuNode(3);
             }
             if(status2 === danmuDef.ChannelStatus.Free) {
                 self.createDanMuNode(2);
             }
-            if(status3 === danmuDef.ChannelStatus.Free) {
-                self.createDanMuNode(3);
+            if(status1 === danmuDef.ChannelStatus.Free) {
+                self.createDanMuNode(1);
+            }
+            if(status0 === danmuDef.ChannelStatus.Free) {
+                self.createDanMuNode(0);
             }
         }
         this.schedule(factoryCenter, 0);

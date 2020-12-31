@@ -62,6 +62,7 @@ cc.Class({
         data.animName = monsterData.name;
         data.monsterType = monsterData.type;
         data.baseVelocityX = this.baseVelocityX;
+        data.monsterPool = this.monsterPool;
 
         var node = null;
         if (this.monsterPool.size() > 0) {

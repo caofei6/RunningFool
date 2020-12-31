@@ -3,9 +3,10 @@
  */
 
 var singleton = require("singleton");
-var gameDef = require("gameDef");
 var eventCenter = require("eventCenter");
+var gameCtrBase = require("gameCtrBase");
 var eventDef = require("eventDef");
+var gameDef = require("gameDef");
 var utils = require("utils");
 
 var gameMonster = {};
@@ -25,13 +26,25 @@ cc.Class({
             default: null,
             type: cc.Animation
         },
+
+        boxCollision: {
+            default: null,
+            type: cc.BoxCollider
+        }
+    },
+
+    onLoad () {
+        eventCenter.addEventObserver(eventDef.GameOver, this.onGameOver, this);
+    },
+
+    onDestroy () {
+        eventCenter.removeEventObserver(eventDef.GameOver, this.onGameOver, this);
     },
 
     update (dt) {
         this.countScore();
         this.destoryMonster();
         this.moveMonster(dt);
-        this.checkCollision();
     },
 
     init (params) {
@@ -39,22 +52,30 @@ cc.Class({
         this.animName = params.animName;
         this.baseVelocityX = params.baseVelocityX;
         this.monsterType = params.monsterType;
+        this.monsterPool = params.monsterPool;
         this.node.canAddScore = true;
+        this.node.isHandel = false;
         this.initImageAndCollider();
-        this.initMonsterPosition();
+        this.initMonsterStatus();
         this.initMonsterCtr();
+        this.initMonsterDanmu();
     },
 
     initImageAndCollider() {
         if (!this.imagePath || !this.SpriteMonster) return;
-        singleton.loadManager.loadSpriteFrame(this.SpriteMonster, this.imagePath, this);
+        singleton.loadManager.loadSpriteFrame(this.SpriteMonster, this.imagePath, this, (size) => {
+            this.boxCollision.size = size;
+            this.boxCollision.offset = cc.v2(size.width/2, size.height/2);
+        });
     },
 
-    initMonsterPosition () {
+    initMonsterStatus () {
         var size = utils.getCanvasSize();
         var gap = 50;
+        this.node.angle = 0;
         this.node.x = size.width / 2 + 3 * gap;
         this.node.y = singleton.nodeGrass.height - size.height / 2 - gap;
+
     },
 
     initAnimationByName () {
@@ -63,7 +84,7 @@ cc.Class({
     },
 
     initMonsterCtr () {
-        // 普通怪
+        // 普通怪，跳着通过
         if(this.monsterType === gameDef.MonsterType.Low || this.monsterType === gameDef.MonsterType.Middle) {
             this.node.message = gameDef.MonsterMessage.Normal;
         }
@@ -82,8 +103,21 @@ cc.Class({
         if(this.monsterType === gameDef.MonsterType.Super) {
             var self = this;
             var liftMonster = function () {
-
+                if (!self.node.canCtr) return;
+                self.node.canCtr = false;
+                var delayTime = utils.randomNum(0, 4);
+                self.node.stopAllActions();
+                self.node.runAction(cc.sequence(
+                    cc.moveBy(0.5, cc.v2(0, 200)),
+                    cc.delayTime(delayTime),
+                    cc.moveBy(0.2, cc.v2(0, -200)).easing(cc.easeBackOut()),
+                    cc.callFunc(() => {
+                        self.node.canCtr = true;
+                    })
+                ))
             };
+
+            this.node.canCtr = true;
             this.node.message = gameDef.MonsterMessage.Can_lift;
             this.node.on(cc.Node.EventType.TOUCH_START, liftMonster, this);
         }
@@ -91,55 +125,72 @@ cc.Class({
 
     // 移动怪物
     moveMonster (dt) {
+        if (this.node.isHandel) return;
         this.node.x -= dt * 180;
     },
 
-    checkCollision () {
-        var ret = utils.collision(singleton.NodePerson, this.node);
-        if(ret) {
-            console.log("zhuang  daole ")
-        }
+    playMonsterDeathAnim () {
+        if(this.node.isHandel) return;
+        var size = cc.director.getScene().getChildByName("Canvas").getContentSize();
+        this.node.stopAllActions();
+        this.node.anchorX = 0.5;
+        this.node.anchorY = 0.5;
+        this.node.runAction(cc.sequence(
+            cc.spawn(
+                cc.moveTo(1, cc.v2(size.width, size.height)),
+                cc.rotateBy(1, 360 * 3)
+            ),
+            cc.callFunc(() => {
+                this.destoryMonster();
+            })
+        ))
     },
-
-    // 只在两个碰撞体开始接触时被调用一次
-    onBeginContact (contact, selfCollider, otherCollider) {
-        // if(selfCollider.node.group !== gameDef.ColliderGroup.Monster || otherCollider.node.group !== gameDef.ColliderGroup.Person) return;
-        //
-        // var message = selfCollider.node.message;
-        // switch (message) {
-        //     case gameDef.MonsterMessage.Normal:
-        //         break;
-        //     case gameDef.MonsterMessage.Can_kick:
-        //         if(singleton.personStation === gameDef.PersonStation.Kick) {
-        //             this.controlMonster = true;
-        //             this.RigidBody.linearVelocity = cc.v2(400, 300);
-        //         }
-        //         break;
-        //     case gameDef.MonsterMessage.Can_spade:
-        //         break;
-        //     case gameDef.MonsterMessage.Can_lift:
-        //         break;
-        //
-        // }
-
-    },
-
-
-
 
     countScore () {
         if(singleton.gameMgr.checkIsGetScore(this.node) && this.node.canAddScore) {
             this.node.canAddScore = false;
-            singleton.gameData.addGameScore();
-            eventCenter.emitEvent(eventDef.Update_GameScore);
+            this.addScore();
         }
     },
 
+    addScore () {
+        singleton.gameData.addGameScore();
+        eventCenter.emitEvent(eventDef.Update_GameScore);
+    },
+
     destoryMonster () {
-        // if(!this.node) return;
-        // if(this.node.x <= gameMonster.destroyPosX) {
-        //     this.node.destroy();
-        // }
-    }
+        if (!this.node || !this.monsterPool) return;
+        if (this.node.x <= -1250) {
+            this.monsterPool.put(this.node);
+        }
+    },
+
+    initMonsterDanmu () {
+        if (!this.node.message) return;
+        var str = "";
+        switch (this.node.message) {
+            case gameDef.MonsterMessage.Normal:
+                str = "平平无奇～";
+                break;
+            case gameDef.MonsterMessage.Can_kick:
+                str = "发挥你的想象～";
+                break;
+            case gameDef.MonsterMessage.Can_spade:
+                str = "来，蹲下试试～";
+                break;
+            case gameDef.MonsterMessage.Can_lift:
+                str = "你不是厉害吗，跳过去呀！";
+                break;
+        }
+
+        var param = {
+            contentStr: str
+        }
+        eventCenter.emitEvent(eventDef.Launch_DanMu, param);
+    },
+
+    onGameOver () {
+        this.playMonsterDeathAnim();
+    },
 
 });

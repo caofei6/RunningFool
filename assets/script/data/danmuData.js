@@ -48,8 +48,6 @@ cc.Class({
     setChannelStatus (idx, status) {
         var name = this.getChannelNameByIdx(idx);
         this.m_danMuChannelStatus[name] = status;
-        console.log("stastus  " + JSON.stringify(this.m_danMuChannelStatus))
-
     }
 
 
